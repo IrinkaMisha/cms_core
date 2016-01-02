@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:util="http://www.springframework.org/schema/util"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                                 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+                                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:set id="listCredentialCore">
+        <beans:value>ROLE_AUTH_DATA</beans:value>
+        <beans:value>ROLE_ADMIN_SETTINGS</beans:value>
+    </util:set >
+
+    <util:set id="listCredentialDynContent">
+        <beans:value>ROLE_DYNCONT_CRUD</beans:value>
+    </util:set >
+
+    <beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <beans:property name="staticMethod" value="rw.ktc.cms.web.security.CredentialBox.addAll"/>
+        <beans:property name="arguments" >
+            <beans:set>
+                <beans:ref bean="listCredentialCore"/>
+                <beans:ref bean="listCredentialDynContent"/>
+            </beans:set>
+        </beans:property>
+    </beans:bean>
+
+    <!--<beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">-->
+        <!--<beans:property name="staticMethod" value="rw.ktc.cms.web.security.CredentialBox.add"/>-->
+        <!--<beans:property name="arguments" >-->
+            <!--<beans:value>ROLE_CRUD_TEST</beans:value>-->
+        <!--</beans:property>-->
+    <!--</beans:bean>-->
+
+    <http security="none" pattern="/resources/script/ckeditor/adapters"/>
+    <http security="none" pattern="/webjars/**"/>
+
+
+    <!--<global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>-->
+    <!--pattern="\**"-->
+    <http use-expressions="true" once-per-request="false" auto-config="true" authentication-manager-ref="authenticationManager">
+        <session-management >
+            <concurrency-control max-sessions="1" />
+        </session-management>
+
+        <csrf disabled="true"></csrf>
+        <headers>
+            <frame-options policy="SAMEORIGIN"/>
+        </headers>
+        <access-denied-handler error-page="/error/403"/>
+        <form-login login-processing-url="/login" authentication-failure-url="/login?login_error=1"/>
+        <logout logout-url="/j_spring_security_logout" logout-success-url="/" invalidate-session="true" delete-cookies="true"/>
+
+        <!--<intercept-url pattern="/managercms/**" access="hasRole('ROLE_CRUD_DC')"/>-->
+        <!--<intercept-url pattern="/managercms/dynamiccontent/savedcontent.html" access="hasRole('ROLE_CREATE_DC')"/>-->
+        <!--<intercept-url pattern="/managercms/dynamiccontent/newdc.html" access="hasRole('ROLE_CREATE_DC')"/>-->
+
+        <intercept-url pattern="/managercms/**" access="permitAll"/>
+
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN_SETTINGS')"/>
+        <intercept-url pattern="/usermanager/createnewuser.html" access="permitAll"/>
+        <!--<intercept-url pattern="/usermanager/**" access="hasRole('ROLE_AUTH_DATA')"/>-->
+
+
+        <intercept-url pattern="/src/rw/ktc/cms/web/form" access="permitAll"/>
+        <!--<intercept-url pattern="/index.jsp" access="permitAll" />-->
+        <intercept-url pattern="/rw/ktc/cms/nodedata" access="permitAll"/>
+    </http>
+
+    <context:component-scan base-package="rw.ktc.cms.web.security"/>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userManServiceForSpringSecurity"/>
+    </authentication-manager>
+
+</beans:beans>

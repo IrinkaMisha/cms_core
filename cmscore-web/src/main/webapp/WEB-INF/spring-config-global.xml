@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="spring-config-hbm.xml"/>
+    <import resource="spring-security-main.xml"/>
+
+
+
+    <!--конечно,по идее,достаточно только rw.ktc.cms, но если указать по-другому - сервисыхер подымаются и ничего не работает (((-->
+    <context:component-scan base-package="rw.ktc.cms.nodedata.service.hib"/>
+    <context:component-scan base-package="rw.ktc.cms.dao.impl"/>
+    <context:component-scan base-package="rw.ktc.cms.model"/>
+    <context:component-scan base-package="rw.ktc.cms.web.security"/>
+    <!--статические ресурсы не обрабатываются через диспетчер-сервлет-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+
+    <mvc:interceptors>
+        <bean class="rw.ktc.cms.web.dynamiccontent.DynamicContentHandler" />
+    </mvc:interceptors>
+
+    <mvc:annotation-driven >
+        <mvc:message-converters>
+            <!--Если этой хуйни для objectMapper не указать, она почемуто часть полей потом не сериализует-->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="objectMapper"/>
+            </bean>
+        </mvc:message-converters>
+        <mvc:argument-resolvers>
+            <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver"/>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="failOnEmptyBeans" value="false"/>
+        <!--<property name="indentOutput" value="true"/>-->
+        <property name="defaultViewInclusion" value="true"/>
+    </bean>
+
+
+    <bean id="nodeStateReaderJSON" class="rw.ktc.cms.nodedata.NodeStateReaderJSON">
+        <description>Этот бин используется как прокси. ТОчнее для сохранения/загрузки списка NodeState сущности NodeImpl
+            в виде json в бд
+        </description>
+        <property name="nodeService" ref="nodeServiceImpl"/>
+        <property name="stateService" ref="stateservice"/>
+    </bean>
+
+    <bean class="rw.ktc.cms.nodedata.NodeStateReaderService">
+        <property name="nodeStateReader" ref="nodeStateReaderJSON"></property>
+    </bean>
+
+    <!--подключение шаблонного представления tiles-->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions" ref="tilesConfig">
+            <!--<list>-->
+            <!--<value>/WEB-INF/views/templates/ksuprbch/tiles-defs.xml</value>-->
+            <!--<value>/WEB-INF/views/tiles-defs-admincontent.xml</value>-->
+            <!--</list>-->
+        </property>
+        <property name="checkRefresh" value="true"/>
+        <!--enabling auto-refresh of Tiles definitions. -->
+        <property name="preparerFactoryClass"
+                  value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>
+    </bean>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+        <!--<property name="order" value="1"/>-->
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+        <!--<property name="order" value="2"/>-->
+    </bean>
+
+    <!--подключение бина для спринковских сообщений-->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <!--<value>classpath:resources/MessageResources</value>-->
+                <value>classpath:i18n/MessageResources</value>
+                <value>classpath:i18n/ValidationMessages</value>
+            </list>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="lang"/>
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="ru"/>
+        <property name="cookieName" value="locale"/>
+    </bean>
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
+    </mvc:interceptors>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--максимальный размер 100 мб, остальное ограничиваем дополнительными настройками-->
+        <property name="maxUploadSize" value="104857600"/>
+    </bean>
+
+    <!--Конфигурируем JSON и XML request-->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="false"/>
+        <property name="favorParameter" value="true"/>
+        <property name="mediaTypes">
+            <value>
+                x-javascript=application/x-javascript
+                json=application/json
+                xml=application/xml
+            </value>
+        </property>
+    </bean>
+
+    <!--бины для загруски фоток и аватарок-->
+    <bean id="imageUploadForUser" class="rw.ktc.cms.web.image.FileUploader">
+        <property name="format">
+            <list>
+                <value>application/msword</value>
+                <value>application/pdf</value>
+                <value>image/jpeg</value>
+                <value>image/png</value>
+                <value>image/gif</value>
+            </list>
+        </property>
+        <!--максимальный размер 3 мб, остальное ограничиваем дополнительными настройками-->
+        <property name="maxSize" value="3145728"/>
+    </bean>
+
+    <bean id="imageUploadForAvatar" class="rw.ktc.cms.web.image.FileUploader">
+        <property name="format">
+            <list>
+                <value>image/jpeg</value>
+                <value>image/png</value>
+                <value>image/gif</value>
+            </list>
+        </property>
+        <!--максимальный размер 500кб, остальное ограничиваем дополнительными настройками-->
+        <property name="maxSize" value="512000"/>
+    </bean>
+
+    <context:component-scan base-package="rw.ktc.cms.web"/>
+
+    <!--перенаправление адресов-->
+    <mvc:view-controller path="/login" view-name="login"/>
+    <mvc:view-controller path="/error/403" view-name="error.403"/>
+    <mvc:view-controller path="/error/404" view-name="error.404"/>
+
+    <!--для тестов - поидее должны быть всегда закоментированны -->
+    <!--<mvc:view-controller path="/htmllesson.html" view-name="htmllesson"/>-->
+    <!--<mvc:view-controller path="/start" view-name="startPage"/>-->
+    <!--<mvc:view-controller path="/test22" view-name="/startPage"/>-->
+
+
+</beans>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--настройка базы данных-->
+
+    <!--<bean id="h2dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="${jdbc.h2.driverClassName}"/>-->
+        <!--<property name="url" value="${jdbc.h2.url}"/>-->
+        <!--<property name="username" value="${jdbc.h2.username}"/>-->
+        <!--<property name="password" value="${jdbc.h2.password}"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="${jdbc.mysql.driverClassName}"/>-->
+        <!--<property name="connectionProperties">-->
+            <!--<props>-->
+                <!--<prop key="useUnicode">true</prop>-->
+                <!--<prop key="characterEncoding">UTF-8</prop>-->
+                <!--<prop key="autoReconnect">true</prop>-->
+                <!--<prop key="failOverReadOnly">false</prop>-->
+                <!--<prop key="maxReconnects">10</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--<property name="url" value="${jdbc.mysql.url}"/>-->
+        <!--<property name="username" value="${jdbc.mysql.username}"/>-->
+        <!--<property name="password" value="${jdbc.mysql.password}"/>-->
+    <!--</bean>-->
+
+    <bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${jdbc.mysql.driverClassName}" />
+        <property name="jdbcUrl" value="${jdbc.mysql.url}" />
+        <property name="user" value="${jdbc.mysql.username}" />
+        <property name="password" value="${jdbc.mysql.password}" />
+        <property name="minPoolSize" value="2" />
+        <property name="maxPoolSize" value="10" />
+        <property name="maxStatements" value="50" />
+        <property name="idleConnectionTestPeriod" value="3000" />
+        <property name="loginTimeout" value="300" />
+    </bean>
+
+    <!--<bean id="dataSourceDB2" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="${jdbc.db2.driverClassName}"/>-->
+        <!--<property name="url" value="${jdbc.db2.url}"/>-->
+        <!--<property name="username" value="${jdbc.db2.username}"/>-->
+        <!--<property name="password" value="${jdbc.db2.password}"/>-->
+    <!--</bean>-->
+
+    <!--</bean>-->
+    <!--настройка бина в котором указывается путь для сканирования пакетов с сущностями для ядра CMS (для хибернета)-->
+    <bean id="listHibPackageNode" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <value>rw.ktc.cms.nodedata</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!--Список хибернет маппингов для модуля CMS.CORE-->
+    <bean id="listHibPackageCMSCORE" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <value>rw.ktc.cms.entity</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!--добавление бинов с путями сканирования пакетов на сущности в общий список-->
+    <bean id="listHibPackage" class="rw.ktc.cms.nodedata.service.hib.HibPackageScan">
+        <constructor-arg>
+            <list>
+                <!--добавляем в hibernate маппинги ядра-->
+                <ref bean="listHibPackageNode"/>
+                <!--добавляем в hibernate маппинги модуля usermanager-->
+                <ref bean="listHibPackageCMSCORE"/>
+                <!--добавляем в хиб маппинги модуля ченжера-->
+                <!--<ref bean="listHibPackageServChange"/>-->
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="listHibPackageFH"
+          factory-bean="listHibPackage"
+          factory-method="getListAll"/>
+
+    <bean id="cmsSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="c3p0"/>
+        <!--<property name="dataSource" ref="h2dataSource"/>-->
+        <property name="hibernateProperties">
+            <props>
+                <prop  key="hibernate.dialect">${org.hibernate.dialect}</prop>
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>-->
+                <!--<prop keyt="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>-->
+                <!--<prop keyt="hibernate.show_sql">true</prop>-->
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--<prop keyt="hibernate.current_session_context_class">thread</prop>-->
+                <!--<prop key="javax.persistence.validation.mode">none</prop>-->
+            </props>
+        </property>
+        <!--<property name="packagesToScan" ref="listHibPackageH">-->
+        <property name="packagesToScan" ref="listHibPackageFH">
+            <!--<list>-->
+            <!--<value>rw.ktcms.nodedata</value>-->
+            <!--<value>rw.ktcms.usermanager</value>-->
+            <!--для модуля interfaceUSOGDP-->
+            <!--<value>rw.ktcsogdp.filters.rasprvagon</value>-->
+            <!--<value>rw.ktcsogdp.modelpoligon.ks.settingsProgramm.entity</value>-->
+            <!--для модуля servicechange-->
+            <!--<value>by.nulay.changer.vk</value>-->
+            <!--<value>by.nulay.changer.films</value>-->
+            <!--<value>by.nulay.changer.task</value>-->
+            <!--</list>-->
+        </property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="cmsSessionFactory"/>
+        <!--<qualifier value="transactionManager"/>-->
+    </bean>
+</beans>

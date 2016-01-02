@@ -1,0 +1,87 @@
+/*@import url("root.css");*/
+
+.container-block {
+    height: 100%;
+    position: relative;
+    border-radius: 5px;
+}
+.select-center {
+     /*padding: 8px;*/
+     /*margin: 2px;*/
+     /*border: 1px double #47ff4c;*/
+     background: rgba(204, 189, 182, 0.36);
+     /*height: 20px;*/
+ }
+.select-empty {
+    padding: 8px;
+    margin: 2px;
+    border: 1px double #ff7763;
+    height: 20px;
+}
+
+.select-notempty {
+    padding: 8px;
+    margin: 2px;
+    border: 1px double #574cff;
+}
+.clearfixd4:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.block-id {
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: -2px;
+    font-size: 12px;
+}
+.adminka {
+    width: 20px;
+    height: auto;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    /*right: 30px;*/
+    display: block;
+    z-index: 100;
+    font-size: 10px;
+}
+
+.ui-menu-item {
+    white-space: nowrap;
+}
+
+.container-setting {
+    /*float: right;*/
+    /*margin-right: -9px;*/
+    /*margin-top: -9px;*/
+    display: block;
+    width: 100px;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    z-index: 100;
+}
+
+table.roles {
+    text-align: left;
+    min-width: 350px;
+}
+
+.tab-content {
+    margin-top: 10px;
+}
+
+select option.removed {
+    color:red;
+}
+select option.active {
+    color:darkgreen;
+}
+select option.noactive {
+    background: #dadada;
+}
