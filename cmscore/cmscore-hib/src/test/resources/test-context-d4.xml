@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <context:property-placeholder location="classpath:jdbc-test.properties"/>
+
+    <context:component-scan base-package="rw.ktc.cms"/>
+    <context:component-scan base-package="rw.ktc.cms.nodedata.service.hib"/>
+
+    <import resource="classpath:dao-d4-test.xml"/>
+    <import resource="classpath:spring-security-test.xml"/>
+
+    <bean id="imageUploadForUser" class="rw.ktc.cms.web.image.FileUploader">
+        <property name="format">
+            <list>
+                <value>application/msword</value>
+                <value>application/pdf</value>
+                <value>image/jpeg</value>
+                <value>image/png</value>
+                <value>image/gif</value>
+            </list>
+        </property>
+        <!--максимальный размер 3 мб, остальное ограничиваем дополнительными настройками-->
+        <property name="maxSize" value="3145728"/>
+    </bean>
+
+    <bean id="imageUploadForAvatar" class="rw.ktc.cms.web.image.FileUploader">
+        <property name="format">
+            <list>
+                <value>image/jpeg</value>
+                <value>image/png</value>
+                <value>image/gif</value>
+            </list>
+        </property>
+        <!--максимальный размер 500кб, остальное ограничиваем дополнительными настройками-->
+        <property name="maxSize" value="512000"/>
+    </bean>
+
+    <bean id="nodeStateReaderJSON" class="rw.ktc.cms.nodedata.NodeStateReaderJSON">
+        <description>Этот бин используется как прокси. ТОчнее для сохранения/загрузки списка NodeState сущности NodeImpl
+            в виде json в бд
+        </description>
+        <property name="nodeService" ref="nodeServiceImpl"/>
+        <property name="stateService" ref="stateservice"/>
+    </bean>
+
+    <bean class="rw.ktc.cms.nodedata.NodeStateReaderService">
+        <property name="nodeStateReader" ref="nodeStateReaderJSON"></property>
+    </bean>
+
+
+</beans>

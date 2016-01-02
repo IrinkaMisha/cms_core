@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>rw.ktc.cms</groupId>
+    <artifactId>cmscore-hib</artifactId>
+    <version>0.1.6-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+        <hibernate.version>4.3.11.Final</hibernate.version>
+        <spring.version>4.2.0.RELEASE</spring.version>
+        <mysql-connector.version>5.1.31</mysql-connector.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>rw.ktc.cms</groupId>
+            <artifactId>cmscore</artifactId>
+            <version>0.1.6-SNAPSHOT</version>
+        </dependency>
+        <!-- зависимость от node-->
+        <dependency>
+            <groupId>rw.ktc.cms</groupId>
+            <artifactId>node</artifactId>
+            <version >0.1.6-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>rw.ktc.cms</groupId>
+            <artifactId>node-hib</artifactId>
+            <version>0.1.6-SNAPSHOT</version>
+        </dependency>
+
+        <!--драйвера для баз данных-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.187</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibm.db2</groupId>
+            <artifactId>db2jcc4</artifactId>
+            <version>4.18.60</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+            <scope>test</scope>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>commons-logging</groupId>-->
+        <!--<artifactId>commons-logging</artifactId>-->
+        <!--<version>1.1.1</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--Spring Framework-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+
+        <!--подключение хибернета-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>http://askbd-srv:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <name>libs-release</name>
+            <url>http://askbd-srv:8081/artifactory/libs-release-local</url>
+        </repository>
+    </distributionManagement>
+</project>
