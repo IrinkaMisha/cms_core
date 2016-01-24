@@ -123,12 +123,12 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.ibm.db2</groupId>
-            <artifactId>db2jcc4</artifactId>
-            <version>4.18.60</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.ibm.db2</groupId>-->
+            <!--<artifactId>db2jcc4</artifactId>-->
+            <!--<version>4.18.60</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -151,12 +151,12 @@
         </dependency>
 
         <!--зависимости для web-->
-        <dependency>
-            <groupId>com.ckfinder</groupId>
-            <artifactId>CKFinder</artifactId>
-            <version>2.4</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.ckfinder</groupId>-->
+            <!--<artifactId>CKFinder</artifactId>-->
+            <!--<version>2.4</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -165,12 +165,12 @@
         </dependency>
 
         <!--зависимости для webjars-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery-ui</artifactId>
-            <version>1.11.4</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.webjars</groupId>-->
+            <!--<artifactId>jquery-ui</artifactId>-->
+            <!--<version>1.11.4</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.webjars.bower</groupId>
             <artifactId>noty</artifactId>
@@ -189,12 +189,12 @@
             <version>1.11.3</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jqgrid</artifactId>
-            <version>5.0.0</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.webjars</groupId>-->
+            <!--<artifactId>jqgrid</artifactId>-->
+            <!--<version>5.0.0</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <!--<dependency>-->
             <!--<groupId>org.webjars</groupId>-->
             <!--<artifactId>jqgrid</artifactId>-->
@@ -225,12 +225,12 @@
         <!--<artifactId>jQuery-contextMenu</artifactId>-->
         <!--<version>1.6.6</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>jQuery-contextMenu</artifactId>
-            <version>1.6.7</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.webjars.bower</groupId>-->
+            <!--<artifactId>jQuery-contextMenu</artifactId>-->
+            <!--<version>1.6.7</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
 
         <dependency>
