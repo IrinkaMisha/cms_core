@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>rw.ktc.cms</groupId>
+    <groupId>by.imix.cms</groupId>
     <artifactId>cmscore-web</artifactId>
-    <version>0.1.6-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <packaging>war</packaging>
 
@@ -22,9 +22,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>rw.ktc.cms</groupId>
+            <groupId>by.imix.cms</groupId>
             <artifactId>node-hib</artifactId>
-            <version>0.1.6-SNAPSHOT</version>
+            <version>1.0.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.fasterxml.jackson.core</groupId>
@@ -33,9 +33,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>rw.ktc.cms</groupId>
+            <groupId>by.imix.cms</groupId>
             <artifactId>cmscore-hib</artifactId>
-            <version>0.1.6-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
