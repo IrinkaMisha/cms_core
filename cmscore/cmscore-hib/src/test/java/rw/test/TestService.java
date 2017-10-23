@@ -9,13 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rw.ktc.cms.nodedata.Node;
-import rw.ktc.cms.nodedata.NodeProperty;
-import rw.ktc.cms.nodedata.service.GenericDAO;
-import rw.ktc.cms.nodedata.service.hib.GenericHibernateDAO;
-import rw.ktc.cms.nodedata.state.State;
-import rw.ktc.cms.nodedata.state.StateDefault;
-import rw.ktc.cms.entity.User;
+import by.imix.cms.nodedata.Node;
+import by.imix.cms.nodedata.NodeProperty;
+import by.imix.cms.nodedata.service.GenericDAO;
+import by.imix.cms.nodedata.service.hib.GenericHibernateDAO;
+import by.imix.cms.nodedata.state.State;
+import by.imix.cms.nodedata.state.StateDefault;
+import by.imix.cms.entity.User;
 
 import java.util.List;
 

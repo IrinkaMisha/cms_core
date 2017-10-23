@@ -72,7 +72,7 @@
     </bean>
 
     <!--добавление бинов с путями сканирования пакетов на сущности в общий список-->
-    <bean id="listHibPackage" class="rw.ktc.cms.nodedata.service.hib.HibPackageScan">
+    <bean id="listHibPackage" class="by.imix.cms.nodedata.service.hib.HibPackageScan">
         <constructor-arg>
             <list>
                 <!--добавляем в hibernate маппинги ядра-->

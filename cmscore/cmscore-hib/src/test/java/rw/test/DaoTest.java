@@ -2,8 +2,8 @@ package rw.test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import rw.ktc.cms.dao.IUserDAO;
-import rw.ktc.cms.entity.User;
+import by.imix.cms.dao.IUserDAO;
+import by.imix.cms.entity.User;
 
 /**
  * Created by sedler on 26.03.15.

@@ -396,12 +396,12 @@
         <snapshotRepository>
             <id>snapshots</id>
             <name>libs-snapshot</name>
-            <url>http://askbd-srv:8081/artifactory/libs-snapshot-local</url>
+            <url>http://imix.by:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
         <repository>
             <id>central</id>
             <name>libs-release</name>
-            <url>http://askbd-srv:8081/artifactory/libs-release-local</url>
+            <url>http://imix.by:8081/artifactory/libs-release-local</url>
         </repository>
     </distributionManagement>
 

@@ -2,12 +2,12 @@ package rw.test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import rw.ktc.cms.isitnecessary.menu.Menu;
-import rw.ktc.cms.isitnecessary.menu.MenuItem;
-import rw.ktc.cms.isitnecessary.menu.MenuNodeService;
-import rw.ktc.cms.nodedata.service.HistoryNodeService;
-import rw.ktc.cms.nodedata.service.StateService;
-import rw.ktc.cms.nodedata.state.StateSimple;
+import by.imix.cms.isitnecessary.menu.Menu;
+import by.imix.cms.isitnecessary.menu.MenuItem;
+import by.imix.cms.isitnecessary.menu.MenuNodeService;
+import by.imix.cms.nodedata.service.HistoryNodeService;
+import by.imix.cms.nodedata.service.StateService;
+import by.imix.cms.nodedata.state.StateSimple;
 
 /**
  * Created by miha on 12.05.2015.
@@ -64,7 +64,7 @@ public class TestMenuLoadSave {
 
         Menu m= null;
         try {
-//            m = mns.getMenuByNode((rw.ktc.cms.nodedata.Node) nodehibservice.getById(11550L,false));
+//            m = mns.getMenuByNode((Node) nodehibservice.getById(11550L,false));
             m = mns.getMenuById(11550L);
         } catch (Exception e) {
             e.printStackTrace();

@@ -22,7 +22,7 @@
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
     <mvc:interceptors>
-        <bean class="rw.ktc.cms.web.dynamiccontent.DynamicContentHandler" />
+        <bean class="by.imix.cms.web.dynamiccontent.DynamicContentHandler" />
     </mvc:interceptors>
 
     <mvc:annotation-driven >
@@ -44,7 +44,7 @@
     </bean>
 
 
-    <bean id="nodeStateReaderJSON" class="rw.ktc.cms.nodedata.NodeStateReaderJSON">
+    <bean id="nodeStateReaderJSON" class="by.imix.cms.nodedata.NodeStateReaderJSON">
         <description>Этот бин используется как прокси. ТОчнее для сохранения/загрузки списка NodeState сущности NodeImpl
             в виде json в бд
         </description>
@@ -52,7 +52,7 @@
         <property name="stateService" ref="stateservice"/>
     </bean>
 
-    <bean class="rw.ktc.cms.nodedata.NodeStateReaderService">
+    <bean class="by.imix.cms.nodedata.NodeStateReaderService">
         <property name="nodeStateReader" ref="nodeStateReaderJSON"></property>
     </bean>
 
@@ -130,7 +130,7 @@
     </bean>
 
     <!--бины для загруски фоток и аватарок-->
-    <bean id="imageUploadForUser" class="rw.ktc.cms.web.image.FileUploader">
+    <bean id="imageUploadForUser" class="by.imix.cms.web.image.FileUploader">
         <property name="format">
             <list>
                 <value>application/msword</value>
@@ -144,7 +144,7 @@
         <property name="maxSize" value="3145728"/>
     </bean>
 
-    <bean id="imageUploadForAvatar" class="rw.ktc.cms.web.image.FileUploader">
+    <bean id="imageUploadForAvatar" class="by.imix.cms.web.image.FileUploader">
         <property name="format">
             <list>
                 <value>image/jpeg</value>

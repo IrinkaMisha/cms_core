@@ -18,7 +18,7 @@
     </util:set >
 
     <beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <beans:property name="staticMethod" value="rw.ktc.cms.web.security.CredentialBox.addAll"/>
+        <beans:property name="staticMethod" value="by.imix.cms.web.security.CredentialBox.addAll"/>
         <beans:property name="arguments" >
             <beans:set>
                 <beans:ref bean="listCredentialCore"/>
@@ -28,7 +28,7 @@
     </beans:bean>
 
     <!--<beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">-->
-        <!--<beans:property name="staticMethod" value="rw.ktc.cms.web.security.CredentialBox.add"/>-->
+        <!--<beans:property name="staticMethod" value="CredentialBox.add"/>-->
         <!--<beans:property name="arguments" >-->
             <!--<beans:value>ROLE_CRUD_TEST</beans:value>-->
         <!--</beans:property>-->

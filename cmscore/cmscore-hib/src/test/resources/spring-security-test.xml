@@ -17,7 +17,7 @@
     </beans:bean>
 
     <!--Sring security бин, включающий в себя списки с допусками для всех модулей -->
-    <beans:bean id="listCredential" class="rw.ktc.cms.web.security.CredentialBox">
+    <beans:bean id="listCredential" class="by.imix.cms.web.security.CredentialBox">
         <beans:constructor-arg>
             <beans:list>
                 <!--добавляем безопасность ядра (список допусков для доступа к ядру)-->
