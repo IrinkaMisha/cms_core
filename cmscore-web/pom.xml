@@ -25,6 +25,10 @@
             <id>ckfinder-mvn-repo-on-github</id>
             <url>https://raw.github.com/buzheng/ckfinder-mvn-repo/master/</url>
         </repository>
+        <repository>
+            <id>imixguy-mvn-repository</id>
+            <url>https://github.com/imixguy/mvn_repository/raw/master</url>
+        </repository>
     </repositories>
 
     <dependencies>
