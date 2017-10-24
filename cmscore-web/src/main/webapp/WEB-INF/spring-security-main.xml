@@ -64,12 +64,12 @@
         <!--<intercept-url pattern="/usermanager/**" access="hasRole('ROLE_AUTH_DATA')"/>-->
 
 
-        <intercept-url pattern="/src/rw/ktc/cms/web/form" access="permitAll"/>
+        <intercept-url pattern="/src/by/imix/cms/web/form" access="permitAll"/>
         <!--<intercept-url pattern="/index.jsp" access="permitAll" />-->
-        <intercept-url pattern="/rw/ktc/cms/nodedata" access="permitAll"/>
+        <intercept-url pattern="/by/imix/cms/nodedata" access="permitAll"/>
     </http>
 
-    <context:component-scan base-package="rw.ktc.cms.web.security"/>
+    <context:component-scan base-package="by.imix.cms.web.security"/>
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userManServiceForSpringSecurity"/>

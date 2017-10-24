@@ -15,8 +15,8 @@
 
     <context:property-placeholder location="classpath:jdbc-test.properties"/>
 
-    <context:component-scan base-package="rw.ktc.cms"/>
-    <context:component-scan base-package="rw.ktc.cms.nodedata.service.hib"/>
+    <context:component-scan base-package="by.imix.cms"/>
+    <context:component-scan base-package="by.imix.cms.nodedata.service.hib"/>
 
     <import resource="classpath:dao-d4-test.xml"/>
     <import resource="classpath:spring-security-test.xml"/>

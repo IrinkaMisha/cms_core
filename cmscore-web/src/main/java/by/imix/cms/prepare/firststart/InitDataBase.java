@@ -78,7 +78,7 @@ public class InitDataBase {
             prop.setProperty("jdbc.password", databaseForm.getPassword());
             prop.setProperty("jdbc.url", databaseForm.getUrl());
             prop.setProperty("jdbc.driverClassName",databaseForm.getDriverClassName());
-            prop.setProperty("rw.ktc.cms.database","1");
+            prop.setProperty("by.imix.cms.database","1");
             prop.store(new FileOutputStream(servletContext.getRealPath("/WEB-INF/classes/jdbc.properties")), null);
 
             return "success";

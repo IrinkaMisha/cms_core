@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="rw.ktc.cms.web.Const" %>
+<%@ page import="by.imix.cms.web.Const" %>
 <c:set var="ctx" scope="request" value="${pageContext.request.contextPath}"/>
 
 

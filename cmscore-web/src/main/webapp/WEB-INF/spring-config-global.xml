@@ -12,11 +12,11 @@
 
 
 
-    <!--конечно,по идее,достаточно только rw.ktc.cms, но если указать по-другому - сервисыхер подымаются и ничего не работает (((-->
-    <context:component-scan base-package="rw.ktc.cms.nodedata.service.hib"/>
-    <context:component-scan base-package="rw.ktc.cms.dao.impl"/>
-    <context:component-scan base-package="rw.ktc.cms.model"/>
-    <context:component-scan base-package="rw.ktc.cms.web.security"/>
+    <!--конечно,по идее,достаточно только by.imix.cms, но если указать по-другому - сервисыхер подымаются и ничего не работает (((-->
+    <context:component-scan base-package="by.imix.cms.nodedata.service.hib"/>
+    <context:component-scan base-package="by.imix.cms.dao.impl"/>
+    <context:component-scan base-package="by.imix.cms.model"/>
+    <context:component-scan base-package="by.imix.cms.web.security"/>
     <!--статические ресурсы не обрабатываются через диспетчер-сервлет-->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
@@ -156,7 +156,7 @@
         <property name="maxSize" value="512000"/>
     </bean>
 
-    <context:component-scan base-package="rw.ktc.cms.web"/>
+    <context:component-scan base-package="by.imix.cms.web"/>
 
     <!--перенаправление адресов-->
     <mvc:view-controller path="/login" view-name="login"/>

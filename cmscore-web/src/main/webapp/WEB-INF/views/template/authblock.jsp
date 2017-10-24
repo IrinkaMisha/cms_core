@@ -4,8 +4,8 @@
 <%@ page import="org.springframework.security.core.Authentication" %>
 <%@ page import="org.springframework.security.core.GrantedAuthority" %>
 <%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
-<%@ page import="rw.ktc.cms.entity.User" %>
-<%@ page import="rw.ktc.cms.web.security.UserWeb" %>
+<%@ page import="by.imix.cms.entity.User" %>
+<%@ page import="by.imix.cms.web.security.UserWeb" %>
 
 <%--
   Created by IntelliJ IDEA.

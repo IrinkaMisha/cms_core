@@ -12,8 +12,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-//import rw.ktc.cms.Role;
-//import rw.ktc.cms.User;
+//import by.imix.cms.Role;
+//import by.imix.cms.User;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,4 +1,4 @@
-<%@ page import="rw.ktc.cms.isitnecessary.menu.Menu" %>
+<%@ page import="by.imix.cms.isitnecessary.menu.Menu" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%--

@@ -1,6 +1,6 @@
 <%@ page import="org.springframework.security.core.Authentication" %>
 <%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
-<%@ page import="rw.ktc.cms.web.security.UserWeb" %>
+<%@ page import="by.imix.cms.web.security.UserWeb" %>
 <%@ page import="org.springframework.security.core.GrantedAuthority" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

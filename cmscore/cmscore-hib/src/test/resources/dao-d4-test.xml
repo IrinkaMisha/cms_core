@@ -34,7 +34,7 @@
     <!--</bean>-->
     <tx:annotation-driven/>
 
-    <context:component-scan base-package="rw.ktc.cms"/>
+    <context:component-scan base-package="by.imix.cms"/>
 
     <bean id="cmsSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -53,8 +53,8 @@
         </property>
         <property name="packagesToScan">
             <list>
-                <value>rw.ktc.cms.nodedata</value>
-                <value>rw.ktc.cms.entity</value>
+                <value>by.imix.cms.nodedata</value>
+                <value>by.imix.cms.entity</value>
             </list>
         </property>
     </bean>

@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page import="rw.ktc.cms.web.form.NodeView" %>
+<%@ page import="by.imix.cms.web.form.NodeView" %>
 <%--Блоки входа пользователя и другие--%>
 <c:set var="nameBlock"><spring:message code="programm.userauth" /></c:set>
 <%

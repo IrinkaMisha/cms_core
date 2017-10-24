@@ -27,6 +27,6 @@
     </beans:bean>
 
 
-    <context:component-scan base-package="rw.ktc.cms.web.security"/>
+    <context:component-scan base-package="by.imix.cms.web.security"/>
 
 </beans:beans>

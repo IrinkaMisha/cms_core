@@ -27,7 +27,7 @@
     <!--</bean>-->
     <tx:annotation-driven/>
 
-    <context:component-scan base-package="rw.ktc.cms.nodedata"/>
+    <context:component-scan base-package="by.imix.cms.nodedata"/>
 
 
 
@@ -45,9 +45,9 @@
         </property>
         <property name="packagesToScan">
             <list>
-                <value>rw.ktc.cms.nodedata</value>
-                <!--<value>rw.ktc.cms.usermanager</value>-->
-                <!--<value>rw.ktc.cms.entity</value>-->
+                <value>by.imix.cms.nodedata</value>
+                <!--<value>by.imix.cms.usermanager</value>-->
+                <!--<value>by.imix.cms.entity</value>-->
             </list>
         </property>
     </bean>

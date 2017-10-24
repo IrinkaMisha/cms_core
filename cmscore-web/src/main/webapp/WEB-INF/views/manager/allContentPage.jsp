@@ -1,4 +1,4 @@
-<%@ page import="rw.gcktc.cms.nodedata.Node" %>
+<%@ page import="by.imix.cms.nodedata.Node" %>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.

@@ -57,7 +57,7 @@
     <bean id="listHibPackageNode" class="java.util.ArrayList">
         <constructor-arg>
             <list>
-                <value>rw.ktc.cms.nodedata</value>
+                <value>by.imix.cms.nodedata</value>
             </list>
         </constructor-arg>
     </bean>
@@ -66,7 +66,7 @@
     <bean id="listHibPackageCMSCORE" class="java.util.ArrayList">
         <constructor-arg>
             <list>
-                <value>rw.ktc.cms.entity</value>
+                <value>by.imix.cms.entity</value>
             </list>
         </constructor-arg>
     </bean>
@@ -107,11 +107,11 @@
         <!--<property name="packagesToScan" ref="listHibPackageH">-->
         <property name="packagesToScan" ref="listHibPackageFH">
             <!--<list>-->
-            <!--<value>rw.ktcms.nodedata</value>-->
-            <!--<value>rw.ktcms.usermanager</value>-->
+            <!--<value>by.imix.cms.nodedata</value>-->
+            <!--<value>by.imix.cms.usermanager</value>-->
             <!--для модуля interfaceUSOGDP-->
-            <!--<value>rw.ktcsogdp.filters.rasprvagon</value>-->
-            <!--<value>rw.ktcsogdp.modelpoligon.ks.settingsProgramm.entity</value>-->
+            <!--<value>by.imix.csogdp.filters.rasprvagon</value>-->
+            <!--<value>rby.imix.sogdp.modelpoligon.ks.settingsProgramm.entity</value>-->
             <!--для модуля servicechange-->
             <!--<value>by.nulay.changer.vk</value>-->
             <!--<value>by.nulay.changer.films</value>-->

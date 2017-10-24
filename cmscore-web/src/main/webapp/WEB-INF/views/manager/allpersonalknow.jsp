@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="rw.ktc.cms.nodedata.Node" %>
-<%@ page import="rw.ktc.cms.nodedata.NodeProperty" %>
+<%@ page import="by.imix.cms.nodedata.Node" %>
+<%@ page import="by.imix.cms.nodedata.NodeProperty" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%--

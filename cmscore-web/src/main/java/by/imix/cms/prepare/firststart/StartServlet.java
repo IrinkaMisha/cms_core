@@ -48,7 +48,7 @@ public class StartServlet extends HttpServlet {
         Properties prop=new Properties();
         try {
             prop.load(getServletContext().getResourceAsStream("/WEB-INF/classes/jdbc.properties"));
-            String database=prop.getProperty("rw.ktc.cms.database");
+            String database=prop.getProperty("by.imix.cms.database");
             if(database.equals("1")) {
                 ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //                IUserDAO userService = (IUserDAO) ctx.getBean(IUserDAO.class);

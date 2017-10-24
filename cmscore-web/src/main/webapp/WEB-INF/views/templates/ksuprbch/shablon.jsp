@@ -1,5 +1,5 @@
 <%@ page import="org.springframework.context.i18n.LocaleContextHolder" %>
-<%@ page import="rw.ktc.cms.web.form.NodeView" %>
+<%@ page import="by.imix.cms.web.form.NodeView" %>
 <%@ page import="java.util.Locale" %>
 <%
     Locale l=LocaleContextHolder.getLocale();

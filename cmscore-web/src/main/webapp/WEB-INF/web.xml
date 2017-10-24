@@ -15,7 +15,7 @@
     
     <!--<servlet>-->
         <!--<servlet-name>StartServlet</servlet-name>-->
-        <!--<servlet-class>rw.ktc.cms.web.prepare.firststart.StartServlet</servlet-class>-->
+        <!--<servlet-class>by.imix.cms.web.prepare.firststart.StartServlet</servlet-class>-->
         <!--<load-on-startup>2</load-on-startup>-->
     <!--</servlet>-->
     <!--<servlet-mapping>-->
