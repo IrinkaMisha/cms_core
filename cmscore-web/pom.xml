@@ -4,7 +4,7 @@
 
     <groupId>by.imix.cms</groupId>
     <artifactId>cmscore-web</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <packaging>war</packaging>
 
@@ -18,6 +18,7 @@
         <jackson.version>2.6.0</jackson.version>
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mysql-connector.version>5.1.31</mysql-connector.version>
+        <imix.version>1.0.0</imix.version>
     </properties>
 
     <repositories>
@@ -35,7 +36,7 @@
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>node-hib</artifactId>
-            <version>1.0.0</version>
+            <version>${imix.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.fasterxml.jackson.core</groupId>
@@ -47,7 +48,7 @@
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>cmscore-hib</artifactId>
-            <version>1.0.0</version>
+            <version>${imix.version}</version>
             <scope>provided</scope>
         </dependency>
 

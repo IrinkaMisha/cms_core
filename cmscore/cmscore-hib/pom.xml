@@ -4,7 +4,7 @@
 
     <groupId>by.imix.cms</groupId>
     <artifactId>cmscore-hib</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -13,6 +13,7 @@
         <hibernate.version>4.3.11.Final</hibernate.version>
         <spring.version>4.2.0.RELEASE</spring.version>
         <mysql-connector.version>5.1.31</mysql-connector.version>
+        <imix.version>1.0.0</imix.version>
     </properties>
 
     <dependencies>
@@ -20,19 +21,19 @@
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>cmscore</artifactId>
-            <version>1.0.0</version>
+            <version>${imix.version}</version>
         </dependency>
         <!-- зависимость от node-->
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>node</artifactId>
-            <version >1.0.0</version>
+            <version >${imix.version}</version>
         </dependency>
 
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>node-hib</artifactId>
-            <version>1.0.0</version>
+            <version>${imix.version}</version>
         </dependency>
 
         <!--драйвера для баз данных-->

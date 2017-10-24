@@ -14,6 +14,7 @@
         <java.version>1.7</java.version>
         <spring.version>4.2.0.RELEASE</spring.version>
         <spring.security.version>4.0.2.RELEASE</spring.security.version>
+        <imix.version>1.0.0</imix.version>
     </properties>
 
     <dependencies>
@@ -21,7 +22,7 @@
         <dependency>
             <groupId>by.imix.cms</groupId>
             <artifactId>node</artifactId>
-            <version>1.0.0</version>
+            <version>${imix.version}</version>
         </dependency>
 
         <dependency>
