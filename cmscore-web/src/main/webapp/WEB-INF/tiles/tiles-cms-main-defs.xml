@@ -4,20 +4,20 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition  name="public" template="/WEB-INF/views/templates/ksuprbch/shablon.jsp">
+    <definition  name="public" template="/WEB-INF/views/templates/imixcms/shablon.jsp">
         <put-attribute name="titleKey" value="programm.defaultkey" />
-        <put-attribute name="header" value="/WEB-INF/views/templates/ksuprbch/header.jsp" />
-        <put-attribute name="navigation" value="/WEB-INF/views/templates/ksuprbch/navigation.jsp" />
+        <put-attribute name="header" value="/WEB-INF/views/templates/imixcms/header.jsp" />
+        <put-attribute name="navigation" value="/WEB-INF/views/templates/imixcms/navigation.jsp" />
         <put-attribute name="content" value="" />
-        <put-attribute name="footer" value="/WEB-INF/views/templates/ksuprbch/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/templates/imixcms/footer.jsp" />
     </definition>
 
-    <definition  name="public2" template="/WEB-INF/views/templates/ksuprbch/shablon2.jsp">
+    <definition  name="public2" template="/WEB-INF/views/templates/imixcms/shablon2.jsp">
         <put-attribute name="titleKey" value="programm.defaultkey" />
-        <put-attribute name="header" value="/WEB-INF/views/templates/ksuprbch/header.jsp" />
-        <put-attribute name="navigation" value="/WEB-INF/views/templates/ksuprbch/navigation.jsp" />
+        <put-attribute name="header" value="/WEB-INF/views/templates/imixcms/header.jsp" />
+        <put-attribute name="navigation" value="/WEB-INF/views/templates/imixcms/navigation.jsp" />
         <put-attribute name="content" value="" />
-        <put-attribute name="footer" value="/WEB-INF/views/templates/ksuprbch/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/templates/imixcms/footer.jsp" />
     </definition>
 
     <definition extends="public" name="startPage">
