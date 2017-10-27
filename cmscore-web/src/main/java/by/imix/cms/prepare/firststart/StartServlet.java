@@ -47,7 +47,9 @@ public class StartServlet extends HttpServlet {
     public void init() throws ServletException {
         Properties prop=new Properties();
         try {
-            prop.load(getServletContext().getResourceAsStream("/WEB-INF/classes/jdbc.properties"));
+            prop.load(getServletContext().getResourceAsStream("/WEB-INF/classes/project.properties"));
+            String jdbcPropertiesUrl=prop.getProperty("cms.jdbcsettingsurl");
+            prop.load(getServletContext().getResourceAsStream("jdbcPropertiesUrl"));
             String database=prop.getProperty("by.imix.cms.database");
             if(database.equals("1")) {
                 ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
