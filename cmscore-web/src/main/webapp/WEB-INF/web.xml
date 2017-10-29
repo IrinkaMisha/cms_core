@@ -6,7 +6,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>WEB-INF/cmsController-servlet.xml</param-value>
+        <param-value>WEB-INF/cmsCheckController-servlet.xml</param-value>
     </context-param>
 
     <listener>
@@ -15,12 +15,12 @@
     
     <!--<servlet>-->
         <!--<servlet-name>StartServlet</servlet-name>-->
-        <!--<servlet-class>by.imix.cms.web.prepare.firststart.StartServlet</servlet-class>-->
-        <!--<load-on-startup>2</load-on-startup>-->
+        <!--<servlet-class>by.imix.cms.prepare.firststart.StartServlet</servlet-class>-->
+        <!--<load-on-startup>3</load-on-startup>-->
     <!--</servlet>-->
     <!--<servlet-mapping>-->
         <!--<servlet-name>StartServlet</servlet-name>-->
-        <!--<url-pattern>/cms/settings</url-pattern>-->
+        <!--<url-pattern>/</url-pattern>-->
     <!--</servlet-mapping>-->
 
     <!--настройки доступа к определенным страницам-->
@@ -71,7 +71,7 @@
         </servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/cmsController-servlet.xml</param-value>
+            <param-value>/WEB-INF/cmsCheckController-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

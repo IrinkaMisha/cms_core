@@ -4,41 +4,38 @@ import by.imix.cms.database.DatabaseUtil;
 import by.imix.cms.entity.Role;
 import by.imix.cms.entity.User;
 import by.imix.cms.nodedata.NodeProperty;
+import by.imix.cms.prepare.firststart.postloading.PostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 import java.io.IOException;
 import java.util.*;
 
 /**
- * Class initialize first loading database and check connect to database
+ * Created by miha on 29.10.2017.
  */
-//@Service
-public class StartServlet implements ServletContextListener {
+@Configuration
+public class FirstConfig {
     private static final Logger logger = LoggerFactory.getLogger(StartServlet.class);
 
 //    @Autowired
 //    private GenericApplicationContext _applicationContext;
 
-    //    @Autowired
+    @Autowired
     private ServletContext context;
-
-    public StartServlet() {
-        init();
-    }
 
 //    @Autowired
 //    public void setServletContext(ServletContext servletContext) {
 //        this.context = servletContext;
 //    }
 
-    public void init() {
-        System.out.println("StartServlet try load data!!!!!");
+    @Bean
+    public PostLoadingFullConfiguration getPostLoadingFullConfiguration() {
+        System.out.println("FirstConfig try to load data");
         Properties prop = new Properties();
         try {
             //URL path=this.getClass().getClassLoader().getResources("../../").nextElement();
@@ -83,27 +80,23 @@ public class StartServlet implements ServletContextListener {
 //                defaultManager.createAdminUser(admin);
                 }
             } else {
-                logger.error("PostLoadingFullConfiguration loading");
-                GenericApplicationContext context = new GenericApplicationContext();
-                new XmlBeanDefinitionReader(context).loadBeanDefinitions("file:**/WEB-INF/cmsController-servlet.xml");
-                context.refresh();
-//                context.setParent(_applicationContext);
-//                _applicationContext.refresh();
-//                new AnnotationConfigApplicationContext(PostLoadingFullConfiguration.class);
+                logger.warn("PostLoadingFullConfiguration loading");
+                return new PostLoadingFullConfiguration();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
 
-    @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
-        context = servletContextEvent.getServletContext();
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
-    }
+//    @Override
+//    public void contextInitialized(ServletContextEvent servletContextEvent) {
+//        context = servletContextEvent.getServletContext();
+//    }
+//
+//    @Override
+//    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+//
+//    }
 }
