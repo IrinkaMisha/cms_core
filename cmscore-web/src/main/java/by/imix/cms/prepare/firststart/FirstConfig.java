@@ -34,6 +34,11 @@ public class FirstConfig {
 //    }
 
     @Bean
+    public PostLoadingFullConfiguration getPostLoadingFullConfiguration2() {
+        return new PostLoadingFullConfiguration();
+    }
+
+    @Bean
     public PostLoadingFullConfiguration getPostLoadingFullConfiguration() {
         System.out.println("FirstConfig try to load data");
         Properties prop = new Properties();

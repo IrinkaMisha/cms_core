@@ -23,7 +23,7 @@
     <!--</sec:http>-->
 
 
-    <import resource="spring-config-global.xml"/>
+    <import resource="classpath*:spring-config-global.xml"/>
 
     <import resource="classpath*:spring-app-modules.xml"/>
 

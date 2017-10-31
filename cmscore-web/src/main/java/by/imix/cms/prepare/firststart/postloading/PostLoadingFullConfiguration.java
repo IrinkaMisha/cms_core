@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ImportResource;
  *
  */
 @Configuration
-@ImportResource( {"file:**/WEB-INF/cmsController-servlet.xml"} )
+@ImportResource( {"cmsController-servlet.xml"} )
 public class PostLoadingFullConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(PostLoadingFullConfiguration.class);
 
