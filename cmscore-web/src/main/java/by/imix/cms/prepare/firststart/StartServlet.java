@@ -6,8 +6,13 @@ import by.imix.cms.entity.User;
 import by.imix.cms.nodedata.NodeProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.stereotype.Service;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -18,24 +23,24 @@ import java.util.*;
 /**
  * Class initialize first loading database and check connect to database
  */
-//@Service
+@Service
 public class StartServlet implements ServletContextListener {
     private static final Logger logger = LoggerFactory.getLogger(StartServlet.class);
 
-//    @Autowired
-//    private GenericApplicationContext _applicationContext;
+    @Autowired
+    private ApplicationContext _applicationContext;
 
-    //    @Autowired
+    @Autowired
     private ServletContext context;
 
     public StartServlet() {
         init();
     }
 
-//    @Autowired
-//    public void setServletContext(ServletContext servletContext) {
-//        this.context = servletContext;
-//    }
+    @Autowired
+    public void setServletContext(ServletContext servletContext) {
+        this.context = servletContext;
+    }
 
     public void init() {
         System.out.println("StartServlet try load data!!!!!");
@@ -83,10 +88,13 @@ public class StartServlet implements ServletContextListener {
 //                defaultManager.createAdminUser(admin);
                 }
             } else {
-                logger.error("PostLoadingFullConfiguration loading");
-                GenericApplicationContext context = new GenericApplicationContext();
-                new XmlBeanDefinitionReader(context).loadBeanDefinitions("file:**/WEB-INF/cmsController-servlet.xml");
-                context.refresh();
+                logger.debug("PostLoadingFullConfiguration loading");
+                GenericApplicationContext dynamicContext = new GenericApplicationContext();
+                new XmlBeanDefinitionReader(dynamicContext).loadBeanDefinitions(new FileSystemResource(context.getRealPath("/") + "cmsController-servlet.xml"));
+                dynamicContext.setParent(_applicationContext);
+                dynamicContext.refresh();
+
+                dynamicContext.registerShutdownHook();
 //                context.setParent(_applicationContext);
 //                _applicationContext.refresh();
 //                new AnnotationConfigApplicationContext(PostLoadingFullConfiguration.class);
@@ -100,6 +108,7 @@ public class StartServlet implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         context = servletContextEvent.getServletContext();
+        _applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
     }
 
     @Override

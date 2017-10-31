@@ -7,8 +7,8 @@
 
 
     <!--<bean id="initializer" class="by.imix.cms.prepare.firststart.StartServlet"/>-->
-
+    <bean id="initializer" class="by.imix.cms.prepare.firststart.FirstConfig"/>
     <!--<context:component-scan base-package="by.imix.cms.prepare.firststart"/>-->
 
-    <import resource="cmsController-servlet.xml"/>
+    <!--<import resource="cmsController-servlet.xml"/>-->
 </beans>
