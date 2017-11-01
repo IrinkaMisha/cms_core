@@ -56,7 +56,7 @@ public class StartServlet implements ServletContextListener {
             String url = prop.getProperty("jdbc.mysql.url");
             String user = prop.getProperty("jdbc.mysql.username");
             String password = prop.getProperty("jdbc.mysql.password");
-            if (!DatabaseUtil.checkConnection(driverName, url, user, password)) {
+            if (!DatabaseUtil.isConnection(driverName, url, user, password)) {
                 logger.warn("Try create user for system");
                 if (true) {
 //                ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());

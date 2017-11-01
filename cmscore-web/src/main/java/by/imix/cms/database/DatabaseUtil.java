@@ -22,7 +22,7 @@ public class DatabaseUtil {
      * @param password   password
      * @return
      */
-    public static boolean checkConnection(String driverName, String url, String user, String password) {
+    public static boolean isConnection(String driverName, String url, String user, String password) {
         try {
             Class.forName(driverName);
             System.out.println("Trying to connect");
