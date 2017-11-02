@@ -4,13 +4,12 @@ import by.imix.cms.database.DatabaseUtil;
 import by.imix.cms.entity.Role;
 import by.imix.cms.entity.User;
 import by.imix.cms.nodedata.NodeProperty;
+import by.imix.cms.prepare.postloading.FirstPostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -31,15 +30,16 @@ public class StartServlet implements ServletContextListener {
     private ApplicationContext _applicationContext;
 
     @Autowired
-    private ServletContext context;
+    private ServletContext servletContext;
 
     public StartServlet() {
-        init();
+
     }
 
     @Autowired
     public void setServletContext(ServletContext servletContext) {
-        this.context = servletContext;
+        this.servletContext = servletContext;
+        init();
     }
 
     public void init() {
@@ -89,13 +89,29 @@ public class StartServlet implements ServletContextListener {
                 }
             } else {
                 logger.debug("PostLoadingFullConfiguration loading");
-                GenericApplicationContext dynamicContext = new GenericApplicationContext();
-                new XmlBeanDefinitionReader(dynamicContext).loadBeanDefinitions(new FileSystemResource(context.getRealPath("/") + "cmsController-servlet.xml"));
-                dynamicContext.setParent(_applicationContext);
-                dynamicContext.refresh();
+//                GenericApplicationContext dynamicContext = null;
+//                try {
+//                    dynamicContext = new GenericApplicationContext();
+//                    System.out.println(servletContext.getRealPath("/") + "cmsController-servlet.xml");
+//                    new XmlBeanDefinitionReader(dynamicContext).loadBeanDefinitions(new FileSystemResource(servletContext.getRealPath("/") + "/WEB-INF/classes/cmsController-servlet.xml"));
+//                    dynamicContext.setParent(_applicationContext);
+//                    dynamicContext.refresh();
+//                    dynamicContext.registerShutdownHook();
+//                } catch (BeansException e) {
+//                    e.printStackTrace();
+//                } catch (IllegalStateException e) {
+//                    e.printStackTrace();
+//                }
 
-                dynamicContext.registerShutdownHook();
-//                context.setParent(_applicationContext);
+
+                AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+                ctx.register(FirstPostLoadingFullConfiguration.class);
+                ctx.setParent(_applicationContext);
+                ctx.refresh();
+                ctx.registerShutdownHook();
+
+
+//                servletContext.setParent(_applicationContext);
 //                _applicationContext.refresh();
 //                new AnnotationConfigApplicationContext(PostLoadingFullConfiguration.class);
             }
@@ -107,12 +123,16 @@ public class StartServlet implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        context = servletContextEvent.getServletContext();
+
+        servletContext = servletContextEvent.getServletContext();
         _applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
+        init();
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
     }
+
+
 }

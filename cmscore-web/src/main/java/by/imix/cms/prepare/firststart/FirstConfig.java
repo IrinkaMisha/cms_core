@@ -4,9 +4,8 @@ import by.imix.cms.database.DatabaseUtil;
 import by.imix.cms.entity.Role;
 import by.imix.cms.entity.User;
 import by.imix.cms.nodedata.NodeProperty;
-import by.imix.cms.prepare.firststart.postloading.FirstPostLoadingFullConfiguration;
-import by.imix.cms.prepare.firststart.postloading.FullPostLoadingFullConfiguration;
-import by.imix.cms.prepare.firststart.postloading.PostLoadingFullConfiguration;
+import by.imix.cms.prepare.postloading.FirstPostLoadingFullConfiguration;
+import by.imix.cms.prepare.postloading.FullPostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -47,7 +46,7 @@ public class FirstConfig {
     }
 
 //    @Bean
-    public PostLoadingFullConfiguration getPostLoadingFullConfiguration() {
+    private void getPostLoadingFullConfiguration() {
         System.out.println("FirstConfig try to load data");
         Properties prop = new Properties();
         try {
@@ -64,7 +63,7 @@ public class FirstConfig {
 //            JavaConfigApplicationContext context =
 //                    new JavaConfigApplicationContext("**/configuration/**/*.class", "**/other/*Config.class");
 
-            if (DatabaseUtil.isConnection(driverName, url, user, password)) {
+            if (!DatabaseUtil.isConnection(driverName, url, user, password)) {
                 logger.warn("Try create user for system");
                 if (true) {
 //                ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
@@ -96,19 +95,19 @@ public class FirstConfig {
 //                defaultManager.createAdminUser(admin);
                 }
                 AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-                ctx.register(FirstPostLoadingFullConfiguration.class);
+                ctx.register(FullPostLoadingFullConfiguration.class);
             } else {
                 AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-                ctx.register(FullPostLoadingFullConfiguration.class);
+                ctx.register(FirstPostLoadingFullConfiguration.class);
                 System.out.println("PostLoadingFullConfiguration loading");
                 logger.warn("PostLoadingFullConfiguration loading");
-                return new FullPostLoadingFullConfiguration();
+//                return new FullPostLoadingFullConfiguration();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return new FullPostLoadingFullConfiguration();
+//        return new FirstPostLoadingFullConfiguration();
     }
 
 
