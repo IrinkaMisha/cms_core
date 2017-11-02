@@ -7,36 +7,39 @@ import by.imix.cms.nodedata.NodeProperty;
 import by.imix.cms.prepare.postloading.FirstPostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 /**
  * Class initialize first loading database and check connect to database
  */
-@Service
+//@Service
 public class StartServlet implements ServletContextListener {
     private static final Logger logger = LoggerFactory.getLogger(StartServlet.class);
 
-    @Autowired
+//    @Autowired
     private ApplicationContext _applicationContext;
 
-    @Autowired
+//    @Autowired
     private ServletContext servletContext;
 
     public StartServlet() {
 
     }
 
-    @Autowired
+//    @Autowired
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
         init();

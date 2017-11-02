@@ -10,5 +10,13 @@
     <!--<bean id="initializer" class="by.imix.cms.prepare.firststart.FirstConfig"/>-->
     <context:component-scan base-package="by.imix.cms.prepare.firststart"/>
 
+
+
+    <!--<condbean:cond test="${developmentmode}">-->
+        <!--<bean id="industryDAO" class="robertmaldon.app.dao.HibernateIndustryDAO">-->
+            <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+        <!--</bean>-->
+    <!--</condbean:cond>-->
+
     <!--<import resource="cmsController-servlet.xml"/>-->
 </beans>
