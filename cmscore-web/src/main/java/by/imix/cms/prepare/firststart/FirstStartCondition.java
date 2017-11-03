@@ -11,7 +11,7 @@ import java.util.Properties;
 /**
  * Created by Mikhail_Kachanouski on 11/2/2017.
  */
-public class FirstOrFullStateCondition implements Condition
+public class FirstStartCondition implements Condition
 {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)
@@ -21,7 +21,7 @@ public class FirstOrFullStateCondition implements Condition
 
     public static boolean isConnect(){
         Properties prop = new Properties();
-        FirstOrFullStateCondition ds=new FirstOrFullStateCondition();
+        FirstStartCondition ds=new FirstStartCondition();
         try
         {
             //URL path=this.getClass().getClassLoader().getResources("../../").nextElement();

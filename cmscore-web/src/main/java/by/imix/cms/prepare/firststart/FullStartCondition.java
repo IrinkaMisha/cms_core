@@ -7,10 +7,10 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 /**
  * Created by miha on 02.11.2017.
  */
-public class FullOrFullStateCondition  implements Condition {
+public class FullStartCondition implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)
     {
-        return !FirstOrFullStateCondition.isConnect();
+        return !FirstStartCondition.isConnect();
     }
 }
