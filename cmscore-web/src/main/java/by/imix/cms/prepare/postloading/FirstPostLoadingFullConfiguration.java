@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ImportResource;
  * Created by Mikhail_Kachanouski on 11/1/2017.
  */
 @Configuration
-@ImportResource({ "classpath:first-start-config.xml"})
+@ImportResource({ "classpath:/first-start-config.xml"})
 public class FirstPostLoadingFullConfiguration implements PostLoadingFullConfiguration
 {
     private static final Logger logger = LoggerFactory.getLogger(FirstPostLoadingFullConfiguration.class);

@@ -26,7 +26,7 @@ public class FirstConfig {
     }
 
     @Bean
-    @Conditional(FirstOrFullStateCondition.class)
+    @Conditional(FullOrFullStateCondition.class)
     public FullPostLoadingFullConfiguration getFullPostLoadingFullConfiguration() {
         return new FullPostLoadingFullConfiguration();
     }

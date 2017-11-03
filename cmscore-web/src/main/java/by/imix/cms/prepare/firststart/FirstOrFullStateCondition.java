@@ -16,14 +16,19 @@ public class FirstOrFullStateCondition implements Condition
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)
     {
+        return isConnect();
+    }
+
+    public static boolean isConnect(){
         Properties prop = new Properties();
+        FirstOrFullStateCondition ds=new FirstOrFullStateCondition();
         try
         {
             //URL path=this.getClass().getClassLoader().getResources("../../").nextElement();
-            prop.load(this.getClass().getClassLoader().getResourceAsStream("project.properties"));
+            prop.load(ds.getClass().getClassLoader().getResourceAsStream("project.properties"));
             //            prop.load(ResourcePathHolder.getServletContext().getResourceAsStream("/WEB-INF/classes/project.properties"));
             String jdbcPropertiesUrl = prop.getProperty("cms.jdbcsettingsurl");
-            prop.load(this.getClass().getClassLoader().getResourceAsStream(jdbcPropertiesUrl));
+            prop.load(ds.getClass().getClassLoader().getResourceAsStream(jdbcPropertiesUrl));
 //            String database = prop.getProperty("by.imix.cms.database");
             String driverName = prop.getProperty("jdbc.mysql.driverClassName");
             String url = prop.getProperty("jdbc.mysql.url");
@@ -31,11 +36,13 @@ public class FirstOrFullStateCondition implements Condition
             String password = prop.getProperty("jdbc.mysql.password");
             if (DatabaseUtil.isConnection(driverName, url, user, password))
             {
+                System.out.println("connect is sucsess");
                 return false;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("connect is bad");
         return true;
     }
 }
