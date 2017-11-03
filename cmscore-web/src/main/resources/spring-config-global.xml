@@ -10,13 +10,12 @@
     <import resource="classpath*:spring-config-hbm.xml"/>
     <import resource="classpath*:spring-security-main.xml"/>
 
-
-
     <!--конечно,по идее,достаточно только by.imix.cms, но если указать по-другому - сервисыхер подымаются и ничего не работает (((-->
     <context:component-scan base-package="by.imix.cms.nodedata.service.hib"/>
     <context:component-scan base-package="by.imix.cms.dao.impl"/>
     <context:component-scan base-package="by.imix.cms.model"/>
     <context:component-scan base-package="by.imix.cms.web.security"/>
+
     <!--статические ресурсы не обрабатываются через диспетчер-сервлет-->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
@@ -129,7 +128,7 @@
         </property>
     </bean>
 
-    <!--бины для загруски фоток и аватарок-->
+    <!--бины для загрузки фоток и аватарок-->
     <bean id="imageUploadForUser" class="by.imix.cms.web.image.FileUploader">
         <property name="format">
             <list>

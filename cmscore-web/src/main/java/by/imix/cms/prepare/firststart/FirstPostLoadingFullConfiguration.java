@@ -1,5 +1,6 @@
-package by.imix.cms.prepare.postloading;
+package by.imix.cms.prepare.firststart;
 
+import by.imix.cms.prepare.PostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;

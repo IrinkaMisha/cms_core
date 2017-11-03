@@ -1,4 +1,4 @@
-package by.imix.cms.prepare.firststart;
+package by.imix.cms.prepare.checkStart;
 
 import by.imix.cms.database.DatabaseUtil;
 import org.springframework.context.annotation.Condition;

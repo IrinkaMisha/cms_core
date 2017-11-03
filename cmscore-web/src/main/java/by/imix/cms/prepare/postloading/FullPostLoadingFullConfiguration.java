@@ -1,5 +1,6 @@
 package by.imix.cms.prepare.postloading;
 
+import by.imix.cms.prepare.PostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,8 @@ import org.springframework.context.annotation.ImportResource;
  */
 @Configuration
 @ImportResource({ "classpath:/cmsController-servlet.xml"})
-public class FullPostLoadingFullConfiguration implements PostLoadingFullConfiguration {
+public class FullPostLoadingFullConfiguration implements PostLoadingFullConfiguration
+{
     private static final Logger logger = LoggerFactory.getLogger(PostLoadingFullConfiguration.class);
     public FullPostLoadingFullConfiguration()
     {

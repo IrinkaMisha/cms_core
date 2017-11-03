@@ -1,13 +1,14 @@
 package by.imix.cms.prepare.firststart;
 
+import by.imix.cms.web.form.DatabaseForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import by.imix.cms.web.form.DatabaseForm;
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
@@ -22,9 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-
-public class InitDataBase {
-    private static final Logger logger = LoggerFactory.getLogger(InitDataBase.class);
+@Controller
+public class InitDataBaseController
+{
+    private static final Logger logger = LoggerFactory.getLogger(InitDataBaseController.class);
 
     @Autowired
     ServletContext servletContext;
