@@ -10,7 +10,7 @@
     <!--<bean id="initializer" claby.imix.cms.prepare.checkStart.FirstConfignfig"/>-->
 
 
-    <context:component-scan base-package="by.imix.cms.prepare.checkStart"/>
+    <!--<context:component-scan base-package="by.imix.cms.prepare.checkStart"/>-->
 
 
 

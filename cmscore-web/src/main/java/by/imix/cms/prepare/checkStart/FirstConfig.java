@@ -25,14 +25,22 @@ public class FirstConfig {
     @Conditional(FirstStartCondition.class)
     public FirstPostLoadingFullConfiguration getFirstPostLoadingFullConfiguration() {
         System.out.println("new FirstPostLoadingFullConfiguration");
-        return new FirstPostLoadingFullConfiguration();
+        FirstPostLoadingFullConfiguration res = new FirstPostLoadingFullConfiguration();
+        if (!FirstStartCondition.isConnect()) {
+            res.initContext();
+        }
+        return res;
     }
 
     @Bean
     @Conditional(FullStartCondition.class)
     public FullPostLoadingFullConfiguration getFullPostLoadingFullConfiguration() {
         System.out.println("new FullPostLoadingFullConfiguration");
-        return new FullPostLoadingFullConfiguration();
+        FullPostLoadingFullConfiguration res = new FullPostLoadingFullConfiguration();
+        if (FirstStartCondition.isConnect()) {
+            res.initContext();
+        }
+        return res;
     }
 
     @Bean
