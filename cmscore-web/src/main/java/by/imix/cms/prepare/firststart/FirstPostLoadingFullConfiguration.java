@@ -1,5 +1,6 @@
-package by.imix.cms.prepare.postloading;
+package by.imix.cms.prepare.firststart;
 
+import by.imix.cms.prepare.PostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -10,20 +11,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 /**
- * Class is needed for load additional configuration when we have establish connect to database
- *
+ * Created by Mikhail_Kachanouski on 11/1/2017.
  */
 @Configuration
-@ImportResource("classpath:cmsController-servlet.xml")
-public class FullPostLoadingFullConfiguration implements PostLoadingFullConfiguration, ApplicationContextAware {
+@ImportResource("classpath:first-start-config.xml")
+public class FirstPostLoadingFullConfiguration implements PostLoadingFullConfiguration, ApplicationContextAware
+{
+    private static final Logger logger = LoggerFactory.getLogger(FirstPostLoadingFullConfiguration.class);
 
     private ApplicationContext applicationContext;
 
-    private static final Logger logger = LoggerFactory.getLogger(PostLoadingFullConfiguration.class);
-    public FullPostLoadingFullConfiguration()
+    public FirstPostLoadingFullConfiguration()
     {
-        System.out.println("start FullPostLoadingFullConfiguration");
-
+        System.out.println("start FirstPostLoadingFullConfiguration");
     }
 
     @Override
@@ -31,12 +31,11 @@ public class FullPostLoadingFullConfiguration implements PostLoadingFullConfigur
         this.applicationContext = applicationContext;
     }
 
-
     public void initContext() {
+        System.out.println("add FirstPostLoadingFullConfiguration");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.setParent(applicationContext);
-        context.register(FullPostLoadingFullConfiguration.class);
+        context.register(FirstPostLoadingFullConfiguration.class);
         context.refresh();
     }
 }
-

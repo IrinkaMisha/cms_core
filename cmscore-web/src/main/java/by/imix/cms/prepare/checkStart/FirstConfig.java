@@ -1,9 +1,8 @@
 package by.imix.cms.prepare.checkStart;
 
 import by.imix.cms.prepare.firststart.*;
-import by.imix.cms.prepare.firststart.FullStartCondition;
-import by.imix.cms.prepare.postloading.FirstPostLoadingFullConfiguration;
-import by.imix.cms.prepare.postloading.FullPostLoadingFullConfiguration;
+import by.imix.cms.prepare.firststart.FirstPostLoadingFullConfiguration;
+import by.imix.cms.prepare.fullloading.FullPostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
