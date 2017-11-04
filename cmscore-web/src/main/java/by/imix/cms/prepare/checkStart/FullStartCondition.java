@@ -8,9 +8,9 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 /**
  * Created by Mikhail_Kachanouski on 11/2/2017.
  */
-public class FirstStartCondition implements Condition{
+public class FullStartCondition implements Condition{
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata){
-        return DatabaseUtil.isConnectWithReadProperty();
+        return !DatabaseUtil.isConnectWithReadProperty();
     }
 }

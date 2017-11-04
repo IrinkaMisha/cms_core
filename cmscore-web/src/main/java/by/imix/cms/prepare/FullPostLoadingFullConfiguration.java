@@ -1,6 +1,5 @@
-package by.imix.cms.prepare.fullloading;
+package by.imix.cms.prepare;
 
-import by.imix.cms.prepare.PostLoadingFullConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -36,6 +35,7 @@ public class FullPostLoadingFullConfiguration implements PostLoadingFullConfigur
     public void initContext() {
         System.out.println("initContext FullPostLoadingFullConfiguration");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        System.out.println(applicationContext);
         context.setParent(applicationContext);
         context.register(FullPostLoadingFullConfiguration.class);
         context.refresh();
