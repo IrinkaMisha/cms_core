@@ -21,7 +21,7 @@
     <!--<sec:custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />-->
     <!--<sec:access-denied-handler ref="oauthAccessDeniedHandler" />-->
     <!--</sec:http>-->
-
+    <bean id="logbean2" class="by.imix.cms.prepare.LogLoadBean2"/>
 
     <import resource="classpath*:spring-config-global.xml"/>
 
