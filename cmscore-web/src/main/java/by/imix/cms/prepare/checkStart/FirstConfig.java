@@ -1,10 +1,7 @@
 package by.imix.cms.prepare.checkStart;
 
-import by.imix.cms.prepare.firststart.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -34,11 +31,5 @@ public class FirstConfig {
 //            res.initContext();
 //        }
         return res;
-    }
-
-    @Bean
-    @Conditional(FullStartCondition.class)
-    public InitDataBaseController getInitDataBase() {
-        return new InitDataBaseController();
     }
 }

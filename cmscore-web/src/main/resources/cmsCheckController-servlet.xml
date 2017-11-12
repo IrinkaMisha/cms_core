@@ -10,8 +10,8 @@
     <!--<bean id="initializer" claby.imix.cms.prepare.checkStart.FirstConfignfig"/>-->
 
 
-    <context:component-scan base-package="by.imix.cms.prepare.checkStart"/>
-    <bean id="logbean1" class="by.imix.cms.prepare.LogLoadBean1"/>
+    <!--<context:component-scan base-package="by.imix.cms.prepare.checkStart"/>-->
+    <!--<bean id="logbean1" class="by.imix.cms.prepare.LogLoadBean1"/>-->
 
 
     <!--<condbean:cond test="${developmentmode}">-->
