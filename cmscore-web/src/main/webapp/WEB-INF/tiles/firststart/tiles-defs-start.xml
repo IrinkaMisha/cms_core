@@ -69,6 +69,18 @@
     <definition name="allContentPage" template="/WEB-INF/views/manager/allContentPage.jsp">
     </definition>
 
+    <definition name="firstPage" template="/WEB-INF/views/firstPage.jsp">
+    </definition>
+
+    <definition name="success" template="/WEB-INF/views/success.jsp">
+    </definition>
+
+    <definition name="firstPage" template="/WEB-INF/views/firstPage.jsp">
+    </definition>
+
+    <definition name="initDataBase" template="/WEB-INF/views/initDataBase.jsp">
+    </definition>
+
 
     <!--<definition extends="public" name="alldynamiccontents">-->
     <!--<put-attribute name="content" value="/WEB-INF/views/manager/dynamicpage/alldynamiccontents.jsp"/>-->

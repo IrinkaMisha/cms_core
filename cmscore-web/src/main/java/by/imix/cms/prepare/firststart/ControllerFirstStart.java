@@ -26,7 +26,7 @@ public class ControllerFirstStart {
         this.context = context;
     }
 
-    @RequestMapping(value = "index1.html")
+    @RequestMapping(value = "index.html")
     public String index() {
 //        log.info("Не поподает сюда - беда блин");
         return "firstPage";
