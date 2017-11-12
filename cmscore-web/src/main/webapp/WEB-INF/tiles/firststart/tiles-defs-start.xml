@@ -4,26 +4,14 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions >
-
-    <definition extends="public" name="addnode">
-        <put-attribute name="titleKey" value="programm.title" />
-        <put-attribute name="content" value="/WEB-INF/views/admincontent/listNews.jsp"/>
+    <definition  name="public" template="/WEB-INF/views/templates/imixcms/shablon.jsp">
+        <put-attribute name="titleKey" value="programm.defaultkey" />
+        <put-attribute name="header" value="/WEB-INF/views/templates/imixcms/header.jsp" />
+        <put-attribute name="navigation" value="/WEB-INF/views/templates/imixcms/navigation.jsp" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/templates/imixcms/footer.jsp" />
     </definition>
 
-    <definition extends="public" name="listMenu">
-        <put-attribute name="titleKey" value="programm.listMenu" />
-        <put-attribute name="content" value="/WEB-INF/views/admincontent/listMenu.jsp"/>
-    </definition>
-
-    <definition extends="public" name="redactMenu">
-        <put-attribute name="titleKey" value="programm.addMenu" />
-        <put-attribute name="content" value="/WEB-INF/views/admincontent/redactMenu.jsp"/>
-    </definition>
-
-    <!--<definition extends="public" name="redactPage">-->
-    <!--<put-attribute name="titleKey" value="programm.addMenu" />-->
-    <!--<put-attribute name="content" value="/WEB-INF/views/manager/addPage.jsp"/>-->
-    <!--</definition>-->
 
     <definition name="viewPage" template="/WEB-INF/views/pageView.jsp">
     </definition>
@@ -33,38 +21,10 @@
     <!--<put-attribute name="content" value="/WEB-INF/views/manager/allContentPage.jsp"/>-->
     <!--</definition>-->
 
-    <definition extends="public" name="redactPersonalKnow">
-        <put-attribute name="titleKey" value="programm.addMenu" />
-        <put-attribute name="content" value="/WEB-INF/views/manager/personalKnow.jsp"/>
-    </definition>
-
-    <definition name="viewPersonalKnow" template="/WEB-INF/views/manager/personalKnowView.jsp"/>
-
-    <definition extends="public" name="allpersonalknow">
-        <put-attribute name="titleKey" value="programm.addMenu" />
-        <put-attribute name="content" value="/WEB-INF/views/manager/allpersonalknow.jsp"/>
-    </definition>
-    <definition extends="public" name="redactPersonalDesire">
-        <put-attribute name="titleKey" value="programm.addMenu" />
-        <put-attribute name="content" value="/WEB-INF/views/manager/personalDesire.jsp"/>
-    </definition>
-
-    <definition extends="public" name="redactDynamicContent">
-        <!--<put-attribute name="titleKey" value="" />-->
-        <put-attribute name="content" value="/WEB-INF/views/manager/dynamicpage/editDynamicPage.jsp"/>
-    </definition>
-
-    <definition name="redactTemplate" template="/WEB-INF/views/manager/dynamicpage/editTemplate.jsp">
-    </definition>
 
     <definition name="helloblock" template="/WEB-INF/views/templates/temp2.jsp">
     </definition>
 
-    <definition name="redactPage" template="/WEB-INF/views/manager/addPage.jsp">
-    </definition>
-
-    <!--<definition name="redactPage" template="/WEB-INF/views/manager/addPage.jsp">-->
-    <!--</definition>-->
 
     <definition name="allContentPage" template="/WEB-INF/views/manager/allContentPage.jsp">
     </definition>
@@ -75,13 +35,13 @@
     <definition name="success" template="/WEB-INF/views/success.jsp">
     </definition>
 
-    <definition name="firstPage" template="/WEB-INF/views/firstPage.jsp">
-    </definition>
-
     <definition name="initDataBase" template="/WEB-INF/views/initDataBase.jsp">
     </definition>
 
 
+    <definition extends="public" name="error">
+        <put-attribute name="content" value="/WEB-INF/views/template/error.jsp"/>
+    </definition>
     <!--<definition extends="public" name="alldynamiccontents">-->
     <!--<put-attribute name="content" value="/WEB-INF/views/manager/dynamicpage/alldynamiccontents.jsp"/>-->
     <!--</definition>-->

@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="logbean3" class="by.imix.cms.prepare.LogLoadBean3"/>
+
 
     <context:component-scan base-package="by.imix.cms.prepare.firststart"/>
 
@@ -134,4 +134,6 @@
         <!--<value>/WEB-INF/tiles/tiles-defs-admincontent.xml</value>-->
         <!--<value>/WEB-INF/tiles/tiles-defs-rolemanager.xml</value>-->
     <!--</util:list>-->
+
+    <bean id="logbean3" class="by.imix.cms.prepare.LogLoadBean3"/>
 </beans>
