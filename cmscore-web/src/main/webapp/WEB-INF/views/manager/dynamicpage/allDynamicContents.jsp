@@ -6,7 +6,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:import url="/WEB-INF/views/manager/cssTable.jsp"/>
-<jsp:include page="/WEB-INF/views/templates/ksuprbch/script.jsp"/>
+<jsp:include page="/WEB-INF/views/templates/imixcms/script.jsp"/>
 <div style="overflow: auto">
     <script type="application/javascript">
         var allTemplObj={

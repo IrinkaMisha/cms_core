@@ -2,26 +2,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%--
-  Created by IntelliJ IDEA.
-  User: miha
-  Date: 06.05.14
-  Time: 12:42
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>
-        <c:set var="titleKey"><tiles:getAsString name="titleKey"/></c:set>
-        <spring:message code="${titleKey}" />
-    </title>
 
-</head>
-<body>
 
 <p>Вы попали на эту страницу, так как это первый запуск системы.</p>
 <p>Для дальнейшего запуска нужно выполнить следующие настройки.</p>
@@ -71,5 +54,3 @@
         </tr>
     </table>
 </form>
-</body>
-</html>

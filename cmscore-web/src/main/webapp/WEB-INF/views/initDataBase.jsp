@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%--
   Created by IntelliJ IDEA.
   User: sedler
@@ -6,13 +7,8 @@
   Time: 11:10
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h1>Инициализация базы данных и первоначальная настройка</h1>
+
+<h1>Инициализация базы данных и первоначальная настройка</h1>
 <form:form method="post" action="${pageContext.request.contextPath}/cms/initdatabase.html" modelAttribute="databaseForm">
     <div>
         <label for="login">Логин базы*</label>
@@ -32,5 +28,4 @@
     </div>
     <input type="submit" value="Отправить"/>
 </form:form>
-</body>
-</html>
+

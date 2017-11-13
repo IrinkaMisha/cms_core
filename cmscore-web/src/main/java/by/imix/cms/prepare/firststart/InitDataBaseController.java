@@ -13,9 +13,7 @@ import org.springframework.web.context.ServletContextAware;
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -76,23 +74,38 @@ public class InitDataBaseController implements ServletContextAware
                     .getConnection(databaseForm.getUrl(), databaseForm.getLogin(), databaseForm.getPassword());
             con.close();
 
-            File file = new File(servletContext.getRealPath("/WEB-INF/startSpring-servlet.xml"));
-            File copyFile = new File(servletContext.getRealPath("/WEB-INF/temp.xml"));
-            FileWriter writer = new FileWriter(copyFile, false);
-            writer.write(config);
-            writer.close();
-            file.delete();
-            copyFile.renameTo(file);
+            Properties prop1 = new Properties();
+
+            //URL path=this.getClass().getClassLoader().getResources("../../").nextElement();
+            prop1.load(servletContext.getResourceAsStream("project.properties"));
+            //            prop.load(ResourcePathHolder.getServletContext().getResourceAsStream("/WEB-INF/classes/project.properties"));
+            String jdbcPropertiesUrl = prop1.getProperty("cms.jdbcsettingsurl");
+//            prop.load(databaseForm.getClass().getClassLoader().getResourceAsStream(jdbcPropertiesUrl));
+//            //            String database = prop.getProperty("by.imix.cms.database");
+//            String driverName = prop.getProperty("jdbc.mysql.driverClassName");
+//            String url = prop.getProperty("jdbc.mysql.url");
+//            String user = prop.getProperty("jdbc.mysql.username");
+//            String password = prop.getProperty("jdbc.mysql.password");
+
+
+
+            //            File file = new File(servletContext.getRealPath("/WEB-INF/startSpring-servlet.xml"));
+//            File copyFile = new File(servletContext.getRealPath("/WEB-INF/temp.xml"));
+//            FileWriter writer = new FileWriter(copyFile, false);
+//            writer.write(config);
+//            writer.close();
+//            file.delete();
+//            copyFile.renameTo(file);
 
             Properties prop = new Properties();
-            prop.load(servletContext.getResourceAsStream("/WEB-INF/classes/jdbc.properties"));
+            prop.load(servletContext.getResourceAsStream(jdbcPropertiesUrl));
             prop.setProperty("org.hibernate.dialect", databaseForm.getDialect());
             prop.setProperty("jdbc.username", databaseForm.getLogin());
             prop.setProperty("jdbc.password", databaseForm.getPassword());
             prop.setProperty("jdbc.url", databaseForm.getUrl());
             prop.setProperty("jdbc.driverClassName", databaseForm.getDriverClassName());
-            prop.setProperty("by.imix.cms.database", "1");
-            prop.store(new FileOutputStream(servletContext.getRealPath("/WEB-INF/classes/jdbc.properties")), null);
+//            prop.setProperty("by.imix.cms.database", "1");
+            prop.store(new FileOutputStream(servletContext.getRealPath(jdbcPropertiesUrl)), null);
 
             return "success";
         }

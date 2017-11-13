@@ -33,7 +33,7 @@
             </c:otherwise>
         </c:choose>
     </title>
-    <jsp:include page="../../templates/ksuprbch/script.jsp"/>
+    <jsp:include page="../../templates/imixcms/script.jsp"/>
 </head>
 <body marginwidth="0" marginheight="0"  leftmargin="0" topmargin="0" class="bodyCl">
 <div>

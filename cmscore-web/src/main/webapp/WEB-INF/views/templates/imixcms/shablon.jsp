@@ -38,7 +38,7 @@
         </c:choose>
     </title>
     <link type="text/css" href="/resources/css/root.css" rel="stylesheet"/>
-    <jsp:include page="../../templates/ksuprbch/script.jsp"/>
+    <jsp:include page="../../templates/imixcms/script.jsp"/>
     <%--<script src="/resources/script/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>--%>
     <%--<script src="/resources/script/injeditor.js" type="text/javascript"></script>--%>
 

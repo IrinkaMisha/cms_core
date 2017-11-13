@@ -61,7 +61,7 @@
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions" ref="tilesConfig">
             <!--<list>-->
-            <!--<value>/WEB-INF/views/templates/ksuprbch/tiles-defs.xml</value>-->
+            <!--<value>/WEB-INF/views/templates/imixcms/tiles-defs.xml</value>-->
             <!--<value>/WEB-INF/views/tiles-defs-admincontent.xml</value>-->
             <!--</list>-->
         </property>
