@@ -10,7 +10,7 @@
     <import resource="classpath*:spring-config-hbm.xml"/>
     <import resource="classpath*:spring-security-main.xml"/>
 
-    <!--конечно,по идее,достаточно только by.imix.cms, но если указать по-другому - сервисыхер подымаются и ничего не работает (((-->
+    <!--конечно,по идее,достаточно только by.imix.cms, но если указать по-другому - сервисы хер подымаются и ничего не работает (((-->
     <context:component-scan base-package="by.imix.cms.nodedata.service.hib"/>
     <context:component-scan base-package="by.imix.cms.dao.impl"/>
     <context:component-scan base-package="by.imix.cms.model"/>
@@ -44,7 +44,9 @@
 
 
     <bean id="nodeStateReaderJSON" class="by.imix.cms.nodedata.NodeStateReaderJSON">
-        <description>Этот бин используется как прокси. ТОчнее для сохранения/загрузки списка NodeState сущности NodeImpl
+        <description>
+            This bean is used as proxy. Exactly it is used for save/load list NodeState entity NodeImpl in view JSON to BD
+            Этот бин используется как прокси. ТОчнее для сохранения/загрузки списка NodeState сущности NodeImpl
             в виде json в бд
         </description>
         <property name="nodeService" ref="nodeServiceImpl"/>

@@ -8,11 +8,37 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
+    <import resource="classpath*:spring-security-first.xml"/>
 
     <context:component-scan base-package="by.imix.cms.prepare.firststart"/>
 
+    <!--статические ресурсы не обрабатываются через диспетчер-сервлет-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+
+    <!--<mvc:interceptors>-->
+        <!--<bean class="by.imix.cms.web.dynamiccontent.DynamicContentHandler" />-->
+    <!--</mvc:interceptors>-->
+
+    <mvc:annotation-driven >
+        <mvc:message-converters>
+            <!--Если этой хуйни для objectMapper не указать, она почемуто часть полей потом не сериализует-->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="objectMapper"/>
+            </bean>
+        </mvc:message-converters>
+        <mvc:argument-resolvers>
+            <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver"/>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="failOnEmptyBeans" value="false"/>
+        <!--<property name="indentOutput" value="true"/>-->
+        <property name="defaultViewInclusion" value="true"/>
+    </bean>
+
     <!--подключение шаблонного представления tiles-->
-    <!--<import resource="classpath*:first-start-continue.xml"/>-->
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
             <list>
@@ -111,23 +137,10 @@
         <property name="maxSize" value="512000"/>
     </bean>
 
-
-    <!--статические ресурсы не обрабатываются через диспетчер-сервлет-->
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
-    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
-
-
-    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
-        <property name="failOnEmptyBeans" value="false"/>
-        <!--<property name="indentOutput" value="true"/>-->
-        <property name="defaultViewInclusion" value="true"/>
-    </bean>
-
-
     <!--перенаправление адресов-->
-    <mvc:view-controller path="/login" view-name="login"/>
-    <mvc:view-controller path="/error/403" view-name="error.403"/>
-    <mvc:view-controller path="/error/404" view-name="error.404"/>
+    <!--<mvc:view-controller path="/login" view-name="login"/>-->
+    <!--<mvc:view-controller path="/error/403" view-name="error.403"/>-->
+    <!--<mvc:view-controller path="/error/404" view-name="error.404"/>-->
 
     <!--<util:list id="tilesConfig" list-class="java.util.ArrayList" value-type="java.lang.String">-->
         <!--<value>/WEB-INF/tiles/tiles-cms-main-defs.xml</value>-->
@@ -136,4 +149,9 @@
     <!--</util:list>-->
 
     <bean id="logbean3" class="by.imix.cms.prepare.LogLoadBean3"/>
+
+    <!--для тестов - поидее должны быть всегда закоментированны -->
+    <!--<mvc:view-controller path="/htmllesson.html" view-name="htmllesson"/>-->
+    <!--<mvc:view-controller path="/start" view-name="startPage"/>-->
+    <!--<mvc:view-controller path="/test22" view-name="/startPage"/>-->
 </beans>
