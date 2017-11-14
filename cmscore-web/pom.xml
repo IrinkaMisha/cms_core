@@ -335,12 +335,12 @@
             <!--<scope>provided</scope>-->
         <!--</dependency>-->
 
-        <!--<dependency>-->
-            <!--<groupId>org.apache.tiles</groupId>-->
-            <!--<artifactId>tiles-api</artifactId>-->
-            <!--<version>${tiles.version}</version>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-api</artifactId>
+            <version>${tiles.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>org.apache.tiles</groupId>-->
@@ -349,12 +349,12 @@
             <!--<scope>provided</scope>-->
         <!--</dependency>-->
 
-        <!--<dependency>-->
-            <!--<groupId>org.apache.tiles</groupId>-->
-            <!--<artifactId>tiles-servlet</artifactId>-->
-            <!--<version>${tiles.version}</version>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-servlet</artifactId>
+            <version>${tiles.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>org.apache.tiles</groupId>-->
