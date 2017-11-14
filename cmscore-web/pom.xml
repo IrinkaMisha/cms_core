@@ -383,6 +383,7 @@
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-extras</artifactId>
             <version>${tiles.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
