@@ -426,7 +426,7 @@
                     </webResources>
 
                     <!--<outputDirectory>${session.executionRootDirectory}/target</outputDirectory>-->
-                    <warName>imixcmscore-${project.version}</warName>
+                    <!--<warName>imixcmscore-${project.version}</warName>-->
 
 
                     <archive>
