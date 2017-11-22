@@ -7,8 +7,10 @@
     <definition  name="public" template="/WEB-INF/views/templates/imixcms/shablon.jsp">
         <put-attribute name="titleKey" value="programm.defaultkey" />
         <put-attribute name="header" value="/WEB-INF/views/templates/imixcms/header.jsp" />
+        <put-attribute name="leftBar" value="/WEB-INF/views/templates/imixcms/leftBar.jsp" />
         <put-attribute name="navigation" value="/WEB-INF/views/templates/imixcms/navigation.jsp" />
-        <put-attribute name="content" value="" />
+        <put-attribute name="contentblock1" value="" />
+        <put-attribute name="contentblock2" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/templates/imixcms/footer.jsp" />
     </definition>
 
@@ -25,7 +27,9 @@
     <!--</definition>-->
 
     <definition extends="public" name="firstPage">
-        <put-attribute name="content" value="/WEB-INF/views/firstPage.jsp"/>
+        <put-attribute name="leftBar" value="" />
+        <put-attribute name="contentblock1" value="/WEB-INF/views/templates/imixcms/block/header-block.jsp"/>
+        <put-attribute name="contentblock2" value="/WEB-INF/views/firstPage.jsp"/>
     </definition>
     <!--<definition name="firstPage" template="/WEB-INF/views/firstPage.jsp">-->
     <!--</definition>-->
@@ -39,19 +43,23 @@
     <!--</definition>-->
 
     <definition extends="public" name="success">
-        <put-attribute name="content" value="/WEB-INF/views/success.jsp"/>
+        <put-attribute name="leftBar" value="" />
+        <put-attribute name="contentblock2" value="/WEB-INF/views/success.jsp"/>
     </definition>
     <!--<definition name="success" template="/WEB-INF/views/success.jsp">-->
     <!--</definition>-->
 
     <definition extends="public" name="initDataBase">
-        <put-attribute name="content" value="/WEB-INF/views/initDataBase.jsp"/>
+        <put-attribute name="leftBar" value="" />
+        <put-attribute name="contentblock1" value="/WEB-INF/views/templates/imixcms/block/header-block.jsp"/>
+        <put-attribute name="contentblock2" value="/WEB-INF/views/initDataBase.jsp"/>
     </definition>
     <!--<definition name="initDataBase" template="/WEB-INF/views/initDataBase.jsp">-->
     <!--</definition>-->
 
     <definition extends="public" name="error">
-        <put-attribute name="content" value="/WEB-INF/views/template/error.jsp"/>
+        <put-attribute name="leftBar" value="" />
+        <put-attribute name="contentblock2" value="/WEB-INF/views/template/error.jsp"/>
     </definition>
 
     <!--<definition extends="public" name="alldynamiccontents">-->

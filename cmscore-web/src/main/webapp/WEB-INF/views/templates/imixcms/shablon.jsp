@@ -12,7 +12,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -48,17 +47,15 @@
     <tiles:insertAttribute name="header" />
 </div>
 <div id="centerpanel">
-    <div id="leftbar">
-        <%--Блоки входа пользователя и другие--%>
-        <jsp:include page="../../template/blockview.jsp"/>
-        <jsp:include page="/WEB-INF/views/blocks/rolesInfoBlock.jsp"/>
-    </div>
-    <div id="content">
+    <tiles:insertAttribute name="leftBar" />
+    <%--<div id="content" style="display:none;"></div>--%>
+    <div id="content2">
         <%--Ошибки системы--%>
         <jsp:include page="../../template/error.jsp"/>
         <%--Центральная страница--%>
+        <tiles:insertAttribute name="contentblock1" />
         <tiles:insertAttribute name="content" />
-    </div>
+     </div>
 </div>
 <div id="footer">
     <tiles:insertAttribute name="footer" />
