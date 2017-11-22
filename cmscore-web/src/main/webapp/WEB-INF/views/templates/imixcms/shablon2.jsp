@@ -55,7 +55,7 @@
         <%--Ошибки системы--%>
         <jsp:include page="../../template/error.jsp"/>
         <%--Центральная страница--%>
-        <tiles:insertAttribute name="content" />
+        <tiles:insertAttribute name="contentblock1" />
     </div>
 </div>
 <div>

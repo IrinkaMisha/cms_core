@@ -54,7 +54,7 @@
         <jsp:include page="../../template/error.jsp"/>
         <%--Центральная страница--%>
         <tiles:insertAttribute name="contentblock1" />
-        <tiles:insertAttribute name="content" />
+        <tiles:insertAttribute name="contentblock2" />
      </div>
 </div>
 <div id="footer">
