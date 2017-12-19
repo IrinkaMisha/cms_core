@@ -41,7 +41,8 @@ public class UserManServiceForSpringSecurity implements UserDetailsManager {
         logger.debug("Ищем в базе юзера по его имени");
         User user = userManagerService.getUserByName(username);
         if (null == user ) throw new UsernameNotFoundException("Не найден пользователь с таким именем, или не верный пароль");
-        return new UserWeb(username, user.getPassword(), true,  user.getActive(), true, true, getGrantedAuthority(user), user);
+        return new UserWeb(username, user.getPassword(), true,  user.getActive(), true,
+                           true, getGrantedAuthority(user), user);
     }
 
     public List<SimpleGrantedAuthority> getGrantedAuthority(User user){

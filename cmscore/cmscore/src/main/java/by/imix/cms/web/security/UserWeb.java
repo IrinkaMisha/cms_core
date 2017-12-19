@@ -16,24 +16,25 @@ import java.util.Collection;
  */
 public class UserWeb extends User
 {
-    private User user;
+    private by.imix.cms.entity.User user;
     private String avatarPath= File.separator+"resources"+File.separator+"avataruser";
 
-    public UserWeb(String username, String password, Collection<? extends GrantedAuthority> authorities, User user) {
+    public UserWeb(String username, String password, Collection<? extends GrantedAuthority> authorities, by.imix.cms.entity.User user) {
         super(username,password,authorities);
         this.user = user;
     }
 
-    public UserWeb(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, User user) {
+    public UserWeb(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired,
+            boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, by.imix.cms.entity.User user) {
         super(username,password,enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,authorities);
         this.user = user;
     }
 
-    public User getUser() {
+    public by.imix.cms.entity.User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(by.imix.cms.entity.User user) {
         this.user = user;
     }
 }
