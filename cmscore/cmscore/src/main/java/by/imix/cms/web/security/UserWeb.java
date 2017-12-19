@@ -1,5 +1,6 @@
 package by.imix.cms.web.security;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -13,25 +14,26 @@ import java.util.Collection;
  * Time: 15:00
  * To change this template use File | Settings | File Templates.
  */
-public class UserWeb extends User{
-    private by.imix.cms.entity.User user;
+public class UserWeb extends User
+{
+    private User user;
     private String avatarPath= File.separator+"resources"+File.separator+"avataruser";
 
-    public UserWeb(String username, String password, Collection<? extends GrantedAuthority> authorities, by.imix.cms.entity.User user) {
+    public UserWeb(String username, String password, Collection<? extends GrantedAuthority> authorities, User user) {
         super(username,password,authorities);
         this.user = user;
     }
 
-    public UserWeb(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, by.imix.cms.entity.User user) {
+    public UserWeb(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, User user) {
         super(username,password,enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,authorities);
         this.user = user;
     }
 
-    public by.imix.cms.entity.User getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(by.imix.cms.entity.User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

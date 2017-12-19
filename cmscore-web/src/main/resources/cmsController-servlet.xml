@@ -23,10 +23,9 @@
     <!--</sec:http>-->
     <bean id="logbean2" class="by.imix.cms.prepare.LogLoadBean2"/>
 
-    <import resource="classpath*:spring-config-global.xml"/>
-
     <import resource="classpath*:spring-app-modules.xml"/>
 
+    <import resource="classpath*:spring-config-global.xml"/>
 
     <import resource="classpath*:spring-app-config.xml"/>
 
