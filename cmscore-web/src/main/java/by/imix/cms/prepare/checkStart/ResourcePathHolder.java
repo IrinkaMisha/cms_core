@@ -1,4 +1,4 @@
-package by.imix.cms.prepare.checkStart;
+package by.imix.cms.prepare.checkstart;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;

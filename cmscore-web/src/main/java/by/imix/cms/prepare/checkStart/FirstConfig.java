@@ -1,4 +1,4 @@
-package by.imix.cms.prepare.checkStart;
+package by.imix.cms.prepare.checkstart;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

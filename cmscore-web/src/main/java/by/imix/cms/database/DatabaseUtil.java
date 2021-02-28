@@ -1,6 +1,6 @@
 package by.imix.cms.database;
 
-import by.imix.cms.prepare.checkStart.FullStartCondition;
+import by.imix.cms.prepare.checkstart.FullStartCondition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -107,6 +107,29 @@ public class DatabaseUtil
             }
         }
     }
+
+
+
+
+//    private void executeSql(String sqlFilePath) {
+//        final class SqlExecuter extends SQLExec {
+//            public SqlExecuter() {
+//                Project project = new Project();
+//                project.init();
+//                setProject(project);
+//                setTaskType("sql");
+//                setTaskName("sql");
+//            }
+//        }
+//
+//        SqlExecuter executer = new SqlExecuter();
+//        executer.setSrc(new File("test1.sql"));
+//        executer.setDriver("org.postgresql.Driver");
+//        executer.setPassword("postgres");
+//        executer.setUserid("postgres");
+//        executer.setUrl("jdbc:postgresql://localhost/test");
+//        executer.execute();
+//    }
 
     /**
      * Method for check database

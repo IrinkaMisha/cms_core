@@ -1,14 +1,20 @@
-package by.imix.cms.prepare.checkStart;
+package by.imix.cms.prepare.checkstart;
 
 import by.imix.cms.database.DatabaseUtil;
+import by.imix.cms.database.FirstInicialize;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
+ * Class condition for check that all data for full load server is in application and we can start it else we will start
+ * subconfiguration that allow indicate this data and save it to settings files or DB
  * Created by Mikhail_Kachanouski on 11/2/2017.
  */
 public class FirstStartCondition implements Condition
@@ -16,6 +22,7 @@ public class FirstStartCondition implements Condition
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)
     {
+        System.out.println("Check possible full configuration");
         return isConnect();
     }
 
@@ -37,6 +44,13 @@ public class FirstStartCondition implements Condition
             if (DatabaseUtil.isConnection(driverName, url, user, password))
             {
                 System.out.println("connect is sucsess");
+                try {
+                    Connection con = DriverManager.getConnection(url, user, password);
+                    FirstInicialize.checkOrCreateTable(con);
+//                    FirstInicialize.checkInitializationTable(con);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 return false;
             }
         } catch (IOException e) {

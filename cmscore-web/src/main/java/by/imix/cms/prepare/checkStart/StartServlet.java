@@ -1,4 +1,4 @@
-package by.imix.cms.prepare.checkStart;
+package by.imix.cms.prepare.checkstart;
 
 import by.imix.cms.database.DatabaseUtil;
 import by.imix.cms.entity.Role;
